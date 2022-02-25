@@ -3,6 +3,7 @@ package com.recipe.vo;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -12,6 +13,8 @@ import lombok.Data;
 @Table(name="user")
 public class UserVO {
 	
+	@Id
+	public int seq;
 	public String name;
 	public String nickname;
 	public String id;
