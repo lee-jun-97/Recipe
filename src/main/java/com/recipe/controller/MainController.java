@@ -29,13 +29,12 @@ public class MainController {
 		
 		model.addAttribute("postList", postList);
 		
-		return "post.html";
+		return "post";
 	}
 	
 	@RequestMapping("/postadd")
 	public String addpost() {
 		
-		
-		return "addPost.html";
+		return "addPost";
 	}
 }
