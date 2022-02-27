@@ -11,9 +11,9 @@ import lombok.Data;
 @Table(name="recipe")
 public class RecipeVO {
 	
-	@Id
 	public int seq;
 	public String id;
+	@Id
 	public String menu;
 	public String recipe;
 	

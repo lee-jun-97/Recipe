@@ -1,7 +1,5 @@
-window.onload = function() {
+window.onload = function () {
 	
-	var postList = "${postList}";
-	
-	alert(postList);
+	alert("${postList}.val");
 	
 }

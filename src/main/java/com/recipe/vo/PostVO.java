@@ -13,9 +13,9 @@ import lombok.Data;
 @Table(name="post")
 public class PostVO {
 	
-	@Id
 	public int seq;
 	public String id ;
+	@Id
 	public String menu ;
 	public String title ;
 	public Date reg_date ;

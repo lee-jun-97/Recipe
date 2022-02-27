@@ -7,31 +7,34 @@
 	<body>
 		<script src="addPost.js"></script>
 		<h1>게시글 작성</h1>
-		<table border="1">
-			<tr>
-				<td>제목</td>
-				<td><input type="text" id="title"></td>
-			</tr>
-			<tr>
-				<td>메뉴</td>
-				<td><input type="text" id="menu"></td>
-			</tr>
-			<tr>
-				<td>재료들</td>
-				<td id="ingredient_cell">
-					<input type="text" id="ingredient" placeholder="재료">
-					<input type="text" id="amount" placeholder="양 입력">
-					<button id="btn-ingredient-add" onclick="createRow()">+</button>
-					<button id="btn-ingredient-add" onclick="deleteRow()">-</button>
-				</td>
-			</tr>
-			<tr>
-				<td>조리법</td>
-				<td>
-					<input type="text" id="recipe">
-					<button id="btn-recipe-add">+</button>
-				</td>
-			</tr>
-		</table>
+		<form action="/save" method="PUT">
+			<table id="post_table" border="1">
+				<tr>
+					<td>제목</td>
+					<td><input type="text" id="title" name="title"></td>
+				</tr>
+				<tr>
+					<td>메뉴</td>
+					<td><input type="text" id="menu" name="menu"></td>
+				</tr>
+				<tr id="ingredient">
+					<td id="ingredient_1"rowspan="1">재료들</td>
+					<td>
+						<input type="text" id="ingredient" placeholder="재료" name="ingredient">
+						<input type="text" id="amount" placeholder="양 입력" name="amount">
+						<!-- <button id="btn-ingredient-add" onclick="addRow()">+</button>
+						<button id="btn-ingredient-del" onclick="delRow()">-</button><br> -->
+					</td>
+				</tr>
+				<tr>
+					<td>조리법</td>
+					<td>
+						<input type="text" id="recipe" name="recipe">
+						<!-- <button id="btn-recipe-add">+</button> -->
+					</td>
+				</tr>
+			</table>
+			<button type="submit">저장</button>
+		</form>
 	</body>
 </html>
