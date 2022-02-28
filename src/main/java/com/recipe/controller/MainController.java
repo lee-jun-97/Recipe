@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.recipe.service.PostService;
+import com.recipe.vo.DetailVO;
 import com.recipe.vo.IngredientVO;
 import com.recipe.vo.PostVO;
 import com.recipe.vo.RecipeVO;
@@ -29,17 +30,33 @@ public class MainController {
 		
 		List<PostVO> postList = postService.getPostAll();
 		
-		log.info(postList.toString());
-		
+//		for(PostVO i  : postList) {
+//			String reg_date_c = postService.changeFormat(i.getReg_date());
+//			
+//		}
 		model.addAttribute("postList", postList);
 		
 		return "post";
 	}
 	
-	@RequestMapping("/postadd")
+	@RequestMapping("/addpost")
 	public String addpost() {
 		
 		return "addPost";
+	}
+	
+	@RequestMapping("/detailpost")
+	public String detailpost(@RequestParam String title, Model model) {
+		
+		log.info(title);
+		
+		List<DetailVO> detailList = postService.getPostDetail(title);
+		
+		model.addAttribute("detailList", detailList);
+		
+		log.info(detailList.toString());
+		
+		return "detailPost";
 	}
 	
 	@RequestMapping("/save")
@@ -73,6 +90,6 @@ public class MainController {
 		
 		postService.saveRecipe(recipeVO);
 		
-		return "post";
+		return "redirect:/post";
 	}
 }

@@ -6,9 +6,9 @@
 	</head>
 	<body>
 		<script src="addPost.js"></script>
-		<h1>게시글 작성</h1>
+		<h1 align="center">게시글 작성</h1>
 		<form action="/save" method="PUT">
-			<table id="post_table" border="1">
+			<table id="post_table" border="1" align="center">
 				<tr>
 					<td>제목</td>
 					<td><input type="text" id="title" name="title"></td>
@@ -18,7 +18,7 @@
 					<td><input type="text" id="menu" name="menu"></td>
 				</tr>
 				<tr id="ingredient">
-					<td id="ingredient_1"rowspan="1">재료들</td>
+					<td id="ingredient_1">재료들</td>
 					<td>
 						<input type="text" id="ingredient" placeholder="재료" name="ingredient">
 						<input type="text" id="amount" placeholder="양 입력" name="amount">
@@ -33,8 +33,11 @@
 						<!-- <button id="btn-recipe-add">+</button> -->
 					</td>
 				</tr>
+				<tr>
+					<td colspan="2" align="right"><button type="submit">저장</button></td>
+				</tr>
 			</table>
-			<button type="submit">저장</button>
 		</form>
+		<a href="/post"><button>목록</button></a>
 	</body>
 </html>

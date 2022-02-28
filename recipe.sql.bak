@@ -25,15 +25,16 @@ create table post
 	menu varchar(10) not null comment '메뉴',
 	title varchar(20) not null comment '제목',
 	id varchar(10) not null comment 'ID',
-	reg_date datetime not null comment '게시 일자'
+	reg_date date not null comment '게시 일자'
 );
 
+drop table post;
 
 ## post table comment 추가
 alter table post comment = '게시물 목록';
 
 ## 게시글 샘플 data 추가
-insert into post(id,menu,title,reg_date) values('test','sample11','sample post','2022-02-26 16:03:23');
+insert into post(id,menu,title,reg_date) values('test','sample','sample post','2022-02-25');
 
 select * from post;
 
@@ -50,8 +51,6 @@ create table food_ingredient
 ## 음식 재료 table comment 추가
 alter table food_ingredient comment = '음식 재료 목록';
 
-select * from food_ingredient ;
-
 ## 음식 조리 방법 table 생성
 create table recipe
 (
@@ -64,10 +63,4 @@ create table recipe
 ## 음식 조리법 table comment 추가
 alter table recipe comment = '음식 조리법';
 
-select * from recipe ;
-
-truncate table recipe ;
-
 commit;
-
-flush privileges;
