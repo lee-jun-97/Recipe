@@ -46,7 +46,12 @@ public class PostService {
 	
 	public List<DetailVO> getPostDetail(String title) {
 		
-		List<DetailVO> detailList = customRepo.getPostDetail(title);  
+		log.info(title);
+		
+		//여기서 안댐
+		List<DetailVO> detailList = customRepo.findByTitle(title);  
+		
+		log.info(detailList.toString());
 		
 		return detailList;
 	}
