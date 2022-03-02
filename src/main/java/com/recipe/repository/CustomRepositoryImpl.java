@@ -21,8 +21,9 @@ public class CustomRepositoryImpl implements CustomRepository {
 	public List<DetailVO> findByTitle(String title) {
 		
 		
-		List<DetailVO> detail = em.createQuery("SELECT A.title, B.menu, B.ingredient, B.amount, C.recipe"
-				+ "FROM post A, food_ingredient B, recipe C WHERE A.title = :title ", DetailVO.class)
+		List<DetailVO> detail = em.createQuery("SELECT post.title, food_ingredient.menu, food_ingredient.ingredient, food_ingredient.amount, recipe.recipe "
+				+ "FROM post, food_ingredient, recipe "
+				+ "WHERE post.title = :title and A.menu = B.menu and B.menu = C.menu", DetailVO.class)
 		.setParameter(title, title)
 		.getResultList();
 		

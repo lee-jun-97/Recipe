@@ -19,6 +19,7 @@ public class UserVO {
 	public String nickname;
 	public String id;
 	public String pw;
+	public String auth;
 	public Date join_date;
 	public Date leave_date;
 	
