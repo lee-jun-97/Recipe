@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login Page</title>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+		<h1>로그인</h1>
+		<form data-th-action="@{/login}" data-th-method="POST">
+			아이디 : <input type="text" name="id"/><br>
+			비밀번호 : <input type="password" name="pw"/><br>
+			<button type="submit">로그인</button>
+		</form>
+		<a th:href="@{/login}"><button>회원가입</button></a>
+	</body>
+</html>

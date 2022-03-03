@@ -13,26 +13,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
 	
-	public SecurityConfig() {
-		
-	}
-	
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests()
-		.antMatchers("/login", "/signup").permitAll()
-		.antMatchers("/post").hasRole("USER")
+		.antMatchers("/", "/login", "/signup", "/adduser").permitAll()
+		.antMatchers("/post").hasAnyRole("USER","ADMIN")
 		.antMatchers("/admin").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		
 		.and()
 		.formLogin()
-		.loginPage("/login")
-		.defaultSuccessUrl("/post")
+		.loginPage("/")
+		.loginProcessingUrl("/login")
+		.defaultSuccessUrl("/post", true)
 		.and()
 		.logout()
 		.logoutSuccessUrl("/")
 		.invalidateHttpSession(true);
+		
+		log.info("Config Success");
 		
 	}
 	

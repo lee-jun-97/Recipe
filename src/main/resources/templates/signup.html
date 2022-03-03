@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sign up</title>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+		<h1>회원 가입</h1>
+		<form data-th-action="@{/adduser}" data-th-method="POST">
+			이름 : <input type="text" name="name"/><br>
+			닉네임 : <input type="text" name="nickname"/><br>
+			아이디 : <input type="text" name="id"/><br>
+			비밀번호 : <input type="password" name="pw"/><br>
+			<button type="submit">제출</button> 
+		</form>
+	</body>
+</html>
