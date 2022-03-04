@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.recipe.vo.DetailVO;
+import com.recipe.vo.UserVO;
 
 @Repository
 @Transactional
@@ -28,6 +29,16 @@ public class CustomRepositoryImpl implements CustomRepository {
 		.getResultList();
 		
 		return detail;
+	}
+
+	@Override
+	public List<UserVO> findById(String id, String pw) {
+		
+		List<UserVO> user = em.createQuery("SELECT A FROM UserVO A WHERE A.id=:id", UserVO.class)
+		.setParameter("id", id)
+		.getResultList();
+		
+		return user;
 	}
 
 }
