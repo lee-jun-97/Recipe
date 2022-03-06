@@ -52,8 +52,6 @@ public class PostService {
 		// Detail 정보 Select 하는 기능 보류
 		List<DetailVO> detailList = customRepo.findByTitle(title);  
 		
-		log.info(detailList.toString());
-		
 		return detailList;
 	}
 	

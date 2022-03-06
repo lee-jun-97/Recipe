@@ -9,6 +9,6 @@ public interface CustomRepository {
 	
 	List<DetailVO> findByTitle(String title);
 	
-	List<UserVO> findById(String id, String pw);
+	List<UserVO> findById(String id);
 	
 }

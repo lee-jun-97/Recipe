@@ -5,29 +5,32 @@
 		<meta charset="UTF-8"/>
 	</head>
 	<body>
-		<script src="addPost.js"></script>
-		<h1 align="center">게시글 작성</h1>
-		<form action="/save" method="PUT">
-			<table id="post_table" border="1" align="center">
+		<h1 align="center">게시글 상세 내용</h1>
+		<form action="/save" method="POST">
+			<table id="post_table" border="1" align="center" data-th-each="vo:${detailList}" data-th-if="${detailList.size() > 0}">
 				<tr>
 					<td>제목</td>
-					<td><input type="text" id="title" name="title"></td>
+					<td>
+						<input type="text" id="title" name="title" data-th-value="${vo.title}">
+					</td>
 				</tr>
 				<tr>
 					<td>메뉴</td>
-					<td><input type="text" id="menu" name="menu"></td>
-				</tr>
-				<tr id="ingredient">
-					<td id="ingredient_1">재료들</td>
 					<td>
-						<input type="text" id="ingredient" placeholder="재료" name="ingredient">
-						<input type="text" id="amount" placeholder="양 입력" name="amount">
+						<input type="text" id="menu" name="menu" data-th-value="${vo.menu}">
+					</td>
+				</tr>
+				<tr>
+					<td>재료들</td>
+					<td>
+						<input type="text" id="ingredient" name="ingredient" data-th-value="${vo.ingredient}">
+						<input type="text" id="amount" name="amount" data-th-value="${vo.amount}">
 					</td>
 				</tr>
 				<tr>
 					<td>조리법</td>
 					<td>
-						<input type="text" id="recipe" name="recipe">
+						<input type="text" id="recipe" name="recipe" data-th-value="${vo.recipe}">
 					</td>
 				</tr>
 				<tr>
