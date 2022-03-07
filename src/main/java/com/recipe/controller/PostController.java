@@ -16,6 +16,7 @@ import com.recipe.vo.DetailVO;
 import com.recipe.vo.IngredientVO;
 import com.recipe.vo.PostVO;
 import com.recipe.vo.RecipeVO;
+import com.recipe.vo.SessionVO;
 
 @Controller
 public class PostController {
@@ -25,15 +26,14 @@ public class PostController {
 	@Autowired
 	PostService postService ;
 	
+	@Autowired
+	SessionVO session;
+	
 	@RequestMapping("/post")
 	public String post(Model model) {
 		
 		List<PostVO> postList = postService.getPostAll();
 		
-//		for(PostVO i  : postList) {
-//			String reg_date_c = postService.changeFormat(i.getReg_date());
-//			
-//		}
 		model.addAttribute("postList", postList);
 		
 		return "post";
@@ -55,8 +55,6 @@ public class PostController {
 		List<DetailVO> detailList = postService.getPostDetail(title);
 		
 		model.addAttribute("detailList", detailList);
-		
-		log.info(detailList.toString());
 		
 		return "detailPost";
 	}

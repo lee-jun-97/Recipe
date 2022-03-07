@@ -23,8 +23,10 @@
 					<td data-th-text="${vo.id}"></td>
 					<td data-th-text="${#dates.format(vo.reg_date, 'yyyy/MM/dd HH:mm:ss')}" ></td>
 				</tr>
+				<tr>
+					<td colspan="5"><a th:href="@{/addpost}"><button>작성</button></a></td>
+				</tr>
 			</tbody>
 		</table>
-		<a data-th-href="@{/addpost}" align="center"><button>작성</button></a>
 	</body>
 </html>

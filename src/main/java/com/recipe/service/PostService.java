@@ -48,8 +48,8 @@ public class PostService {
 		
 		log.info(title);
 		
-		// 2022. 03. 02
-		// Detail 정보 Select 하는 기능 보류
+		// 2022. 03. 02 ~ 2022. 03 .06
+		// Detail 정보 Select 하는 기능 완성
 		List<DetailVO> detailList = customRepo.findByTitle(title);  
 		
 		return detailList;

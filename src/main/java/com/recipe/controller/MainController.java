@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.recipe.service.LoginService;
+import com.recipe.vo.SessionVO;
 import com.recipe.vo.UserVO;
 
 @Controller
@@ -21,6 +22,9 @@ public class MainController {
 	@Autowired
 	LoginService loginService ;
 	
+	@Autowired
+	SessionVO session ;
+	
 	@RequestMapping("/")
 	public String home() {
 
@@ -30,19 +34,26 @@ public class MainController {
 	@RequestMapping("/login")
 	public String login(@RequestParam String id, @RequestParam String pw) {
 		
-		String redirect ;
+		String redirect = "";
 		
 		boolean check = loginService.logincheck(id, pw);
 		
 		if (check == true ) {
 			redirect = "redirect:/post";
+			session.setId(id);
 		} else {
 			redirect = "redirect:/login";
 		}
 		
-		log.info(redirect);
+		return redirect;
+	}
+	
+	@RequestMapping("/logout")
+	public String logout() {
 		
-		return "redirect:/post";
+		session.setId("");
+		
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/signup")
