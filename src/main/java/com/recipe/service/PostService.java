@@ -9,14 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.recipe.repository.CustomRepository;
+import com.recipe.domain.Detail;
+import com.recipe.domain.Ingredient;
+import com.recipe.domain.Post;
+import com.recipe.domain.Recipe;
 import com.recipe.repository.IngredientRepository;
 import com.recipe.repository.PostRepository;
 import com.recipe.repository.RecipeRepository;
-import com.recipe.vo.DetailVO;
-import com.recipe.vo.IngredientVO;
-import com.recipe.vo.PostVO;
-import com.recipe.vo.RecipeVO;
 
 @Service
 public class PostService {
@@ -32,25 +31,22 @@ public class PostService {
 	@Autowired
 	RecipeRepository recipeRepo;
 	
-	@Autowired
-	CustomRepository customRepo;
-	
-	public List<PostVO> getPostAll() {
+	public List<Post> getPostAll() {
 		
 		log.info("### Post Table Select Start ###");
-		List<PostVO> postList = postRepo.findAll();
+		List<Post> postList = postRepo.findAll();
 		log.info("### Post Table Select End   ###");
 		
 		return postList;
 	}
 	
-	public List<DetailVO> getPostDetail(String title) {
+	public List<Detail> getPostDetail(String title, String menu) {
 		
 		log.info(title);
 		
 		// 2022. 03. 02 ~ 2022. 03 .06
 		// Detail 정보 Select 하는 기능 완성
-		List<DetailVO> detailList = customRepo.findByTitle(title);  
+		List<Detail> detailList = postRepo.findDetail(title, menu);  
 		
 		return detailList;
 	}
@@ -62,21 +58,21 @@ public class PostService {
 		return df.format(reg_date);
 	}
 	
-	public String savePost(PostVO postVO) {
+	public String savePost(Post postVO) {
 		
 		postRepo.save(postVO);
 		
 		return "success";
 	}
 	
-	public String saveIngredient(IngredientVO ingredientVO) {
+	public String saveIngredient(Ingredient ingredientVO) {
 		
 		ingredientRepo.save(ingredientVO);
 		
 		return "success";
 	}
 	
-	public String saveRecipe(RecipeVO recipeVO) {
+	public String saveRecipe(Recipe recipeVO) {
 		
 		recipeRepo.save(recipeVO);
 		

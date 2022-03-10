@@ -10,18 +10,14 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="user")
-public class UserVO {
+@Table(name="post")
+public class Post {
 	
-	@Id
 	public int seq;
-	public String name;
-	public String nickname;
-	public String id;
-	public String pw;
-	public String auth;
-	public Date join_date;
-	public Date leave_date;
+	public String id ;
+	@Id
+	public String menu ;
+	public String title ;
+	public Date reg_date ;
 	
-
 }

@@ -3,27 +3,25 @@ package com.recipe.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.recipe.domain.Session;
+import com.recipe.domain.User;
 import com.recipe.service.LoginService;
-import com.recipe.vo.SessionVO;
-import com.recipe.vo.UserVO;
 
 @Controller
 public class MainController {
 	
-	private static final Logger log = LoggerFactory.getLogger(MainController.class);
+//	private static final Logger log = LoggerFactory.getLogger(MainController.class);
 	
-	@Autowired
-	LoginService loginService ;
+	private static final Session session = new Session();
+	private LoginService loginService ;
 	
-	@Autowired
-	SessionVO session ;
+	public MainController(LoginService loginService) {
+		this.loginService = loginService ;
+	}
 	
 	@RequestMapping("/")
 	public String home() {
@@ -63,23 +61,26 @@ public class MainController {
 	}
 	
 	@RequestMapping("/adduser")
-	public String adduser(UserVO userVO) {
-
-		log.info(userVO.toString());
+	public String adduser(User user) {
+		
+		user = userSet(user) ;
+		
+		loginService.adduser(user);
+		
+		return "redirect:/";
+	}
+	
+	public User userSet(User user) {
 		
 		Date date = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
 		df.format(date);
 		
-		userVO.setAuth("USER");
-		userVO.setJoin_date(date);
+		user.setAuth("USER");
+		user.setJoin_date(date);
 		
-		log.info(userVO.toString());
-		
-		loginService.adduser(userVO);
-		
-		return "redirect:/";
+		return user;
 	}
 	
 	

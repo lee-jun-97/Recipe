@@ -1,9 +1,13 @@
 package com.recipe.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
-import com.recipe.vo.IngredientVO;
+import com.recipe.domain.Ingredient;
 
-public interface IngredientRepository extends JpaRepository<IngredientVO, Long>{
+
+public interface IngredientRepository {
+	
+	Ingredient save(Ingredient ing);
+	Optional<Ingredient> findByMenu(String menu);
 
 }

@@ -3,7 +3,7 @@ package com.recipe.domain;
 import lombok.Data;
 
 @Data
-public class DetailVO {
+public class Detail {
 
 	public String title;
 	public String menu;

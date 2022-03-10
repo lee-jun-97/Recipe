@@ -1,9 +1,17 @@
 package com.recipe.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+import java.util.Optional;
 
-import com.recipe.vo.PostVO;
+import com.recipe.domain.Detail;
+import com.recipe.domain.Post;
 
-public interface PostRepository extends JpaRepository<PostVO, Long>{
+public interface PostRepository {
+	
+	Post save(Post post);
+	List<Post> findAll();
+	Optional<Post> findByTitle(String title);
+	List<Detail> findDetail(String title, String menu);
+	
 
 }

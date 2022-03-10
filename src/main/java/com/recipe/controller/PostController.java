@@ -11,12 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.recipe.domain.Detail;
+import com.recipe.domain.Ingredient;
+import com.recipe.domain.Post;
+import com.recipe.domain.Recipe;
+import com.recipe.domain.Session;
 import com.recipe.service.PostService;
-import com.recipe.vo.DetailVO;
-import com.recipe.vo.IngredientVO;
-import com.recipe.vo.PostVO;
-import com.recipe.vo.RecipeVO;
-import com.recipe.vo.SessionVO;
 
 @Controller
 public class PostController {
@@ -27,12 +27,12 @@ public class PostController {
 	PostService postService ;
 	
 	@Autowired
-	SessionVO session;
+	Session session;
 	
 	@RequestMapping("/post")
 	public String post(Model model) {
 		
-		List<PostVO> postList = postService.getPostAll();
+		List<Post> postList = postService.getPostAll();
 		
 		model.addAttribute("postList", postList);
 		
@@ -48,11 +48,11 @@ public class PostController {
 	// 2022. 03. 02
 	// 보류
 	@RequestMapping("/detailpost")
-	public String detailpost(@RequestParam String title, Model model) {
+	public String detailpost(@RequestParam String title, @RequestParam String menu, Model model) {
 		
 		log.info(title);
 		
-		List<DetailVO> detailList = postService.getPostDetail(title);
+		List<Detail> detailList = postService.getPostDetail(title, menu);
 		
 		model.addAttribute("detailList", detailList);
 		
@@ -64,9 +64,9 @@ public class PostController {
 			@RequestParam String title, @RequestParam String menu,
 			@RequestParam String ingredient, @RequestParam String amount, @RequestParam String recipe) {
 		
-		PostVO postVO = new PostVO();
-		IngredientVO ingredientVO = new IngredientVO();
-		RecipeVO recipeVO = new RecipeVO();
+		Post postVO = new Post();
+		Ingredient ingredientVO = new Ingredient();
+		Recipe recipeVO = new Recipe();
 		
 		Date date = new Date();
 		

@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Component
 @Data
-public class SessionVO {
+public class Session {
 	
 	public String id;
 

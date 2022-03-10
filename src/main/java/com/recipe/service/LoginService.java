@@ -1,48 +1,40 @@
 package com.recipe.service;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.recipe.repository.CustomRepository;
+import com.recipe.domain.User;
 import com.recipe.repository.UserRepository;
-import com.recipe.vo.UserVO;
 
 @Service
 public class LoginService {
 	
 	private static final Logger log = LoggerFactory.getLogger(LoginService.class);
+	private UserRepository userRepo ;
 	
-	@Autowired
-	UserRepository userRepo ;
+	public LoginService(UserRepository userRepo) {
+		this.userRepo = userRepo;
+	}
 	
-	@Autowired
-	CustomRepository customRepo ;
-	
-//	BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder(); 
-	
-	public void adduser(UserVO userVO) {
-		
-		
-//		userVO.setPw(pwEncoder.encode(userVO.getPw()));
-		
+	public void adduser(User userVO) {
 		userRepo.save(userVO);
-		
 	}
 	
 	public boolean logincheck(String id, String pw) {
 		
-		List<UserVO> user = customRepo.findById(id);
+		Optional<User> user = userRepo.findById(id);
+		
+		
 		
 		boolean idCheck ;
 		boolean pwCheck ;
 		
 		boolean check;
 		
-		if(id.equals(user.get(0).getId())) {
+		if(id.equals(user.get().getId())) {
 			idCheck = true;
 		} else {
 			idCheck = false;
@@ -52,7 +44,7 @@ public class LoginService {
 		
 //		pwCheck = pwEncoder.matches(pw, user.get(0).getPw());
 		
-		if(pw.equals(user.get(0).getPw())) {
+		if(pw.equals(user.get().getPw())) {
 			pwCheck = true ;
 		} else {
 			pwCheck = false ;

@@ -1,9 +1,11 @@
 package com.recipe.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
-import com.recipe.vo.UserVO;
+import com.recipe.domain.User;
 
-public interface UserRepository extends JpaRepository<UserVO, Long>{
-
+public interface UserRepository {
+	
+	User save(User user);
+	Optional<User> findById(String id);
 }

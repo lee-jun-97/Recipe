@@ -1,9 +1,13 @@
 package com.recipe.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
-import com.recipe.vo.RecipeVO;
+import com.recipe.domain.Recipe;
 
-public interface RecipeRepository extends JpaRepository<RecipeVO, Long>{
+
+public interface RecipeRepository {
+	
+	Recipe save(Recipe recipe);
+	Optional<Recipe> findByMenu(String menu);
 
 }

@@ -1,7 +1,5 @@
 package com.recipe.domain;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,14 +8,13 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="post")
-public class PostVO {
+@Table(name="recipe")
+public class Recipe {
 	
 	public int seq;
-	public String id ;
+	public String id;
 	@Id
-	public String menu ;
-	public String title ;
-	public Date reg_date ;
+	public String menu;
+	public String recipe;
 	
 }
