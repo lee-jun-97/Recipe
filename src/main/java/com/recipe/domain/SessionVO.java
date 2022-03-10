@@ -1,4 +1,4 @@
-package com.recipe.vo;
+package com.recipe.domain;
 
 import org.springframework.stereotype.Component;
 

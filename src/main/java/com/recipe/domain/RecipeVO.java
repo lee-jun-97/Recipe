@@ -1,4 +1,4 @@
-package com.recipe.vo;
+package com.recipe.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
