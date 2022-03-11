@@ -5,11 +5,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.stereotype.Repository;
+
 import com.recipe.domain.Detail;
 import com.recipe.domain.Ingredient;
 import com.recipe.domain.Post;
 import com.recipe.domain.Recipe;
 
+@Repository
 public class JpaCustomRepository implements CustomRepository {
 	
 	EntityManager em ;

@@ -19,15 +19,18 @@ public class LoginService {
 		this.userRepo = userRepo;
 	}
 	
-	public void adduser(User userVO) {
-		userRepo.save(userVO);
+	public void adduser(User user) {
+		Optional<User> user_1 = userRepo.findById(user.getId());
+		if (this.validate(user_1.get().getId()) == true ) {
+			userRepo.save(user);
+		} else {
+			log.warn("이미 존재하는 ID입니다.");
+		}
 	}
 	
 	public boolean logincheck(String id, String pw) {
 		
 		Optional<User> user = userRepo.findById(id);
-		
-		
 		
 		boolean idCheck ;
 		boolean pwCheck ;
@@ -40,17 +43,11 @@ public class LoginService {
 			idCheck = false;
 		}
 		
-		System.out.println(idCheck);
-		
-//		pwCheck = pwEncoder.matches(pw, user.get(0).getPw());
-		
 		if(pw.equals(user.get().getPw())) {
 			pwCheck = true ;
 		} else {
 			pwCheck = false ;
 		}
-		
-		System.out.println(pwCheck);
 		
 		if(idCheck == true && pwCheck == true) {
 			check = true;
@@ -58,9 +55,16 @@ public class LoginService {
 			check = false;
 		}
 		
-		log.info("### Check Finish ### " + check);
-		
 		return check;
+	}
+	
+	public boolean validate(String id) throws IllegalStateException {
+		if (id == null ) {
+			log.info("회원 가입 가능 한 아이디입니다.");
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 

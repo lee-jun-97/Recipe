@@ -13,10 +13,10 @@ import lombok.Data;
 @Table(name="user")
 public class User {
 	
-	@Id
 	public int seq;
 	public String name;
 	public String nickname;
+	@Id
 	public String id;
 	public String pw;
 	public String auth;

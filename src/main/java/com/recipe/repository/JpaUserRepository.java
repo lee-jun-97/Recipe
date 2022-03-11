@@ -4,8 +4,11 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.stereotype.Repository;
+
 import com.recipe.domain.User;
 
+@Repository
 public class JpaUserRepository implements UserRepository {
 	
 	private EntityManager em ;

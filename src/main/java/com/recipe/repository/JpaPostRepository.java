@@ -5,9 +5,12 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.stereotype.Repository;
+
 import com.recipe.domain.Detail;
 import com.recipe.domain.Post;
 
+@Repository
 public class JpaPostRepository implements PostRepository {
 	
 	private EntityManager em ;

@@ -4,8 +4,11 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.stereotype.Repository;
+
 import com.recipe.domain.Recipe;
 
+@Repository
 public class JpaRecipeRepository implements RecipeRepository {
 	
 	EntityManager em ;
