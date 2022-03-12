@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
 
-import com.recipe.domain.Detail;
 import com.recipe.domain.Post;
 
 @Repository
@@ -37,10 +36,4 @@ public class JpaPostRepository implements PostRepository {
 	public Optional<Post> findByTitle(String title) {
 		return Optional.ofNullable(em.find(Post.class, title));
 	}
-
-	@Override
-	public List<Detail> findDetail(String title, String menu) {
-		return null;
-	}
-
 }

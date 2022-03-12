@@ -7,16 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.recipe.domain.Session;
 import com.recipe.domain.User;
 import com.recipe.service.LoginService;
 
 @Controller
 public class MainController {
 	
-//	private static final Logger log = LoggerFactory.getLogger(MainController.class);
-	
-	private static final Session session = new Session();
 	private LoginService loginService ;
 	
 	public MainController(LoginService loginService) {
@@ -38,7 +34,6 @@ public class MainController {
 		
 		if (check == true ) {
 			redirect = "redirect:/post";
-			session.setId(id);
 		} else {
 			redirect = "redirect:/login";
 		}
@@ -48,8 +43,6 @@ public class MainController {
 	
 	@RequestMapping("/logout")
 	public String logout() {
-		
-		session.setId("");
 		
 		return "redirect:/";
 	}
@@ -63,11 +56,7 @@ public class MainController {
 	@RequestMapping("/adduser")
 	public String adduser(User user) {
 		
-		user = userSet(user) ;
-		
-		loginService.adduser(user);
-		
-		return "redirect:/";
+		return loginService.adduser(userSet(user));
 	}
 	
 	public User userSet(User user) {

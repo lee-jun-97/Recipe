@@ -1,9 +1,8 @@
 package com.recipe.service;
 
-import java.util.Date;
-
 import javax.persistence.EntityManager;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +13,7 @@ import com.recipe.repository.UserRepository;
 @Transactional
 public class LoginServiceTest {
 	
-	EntityManager em ;
+	private EntityManager em ;
 	
 	UserRepository userRepo = new JpaUserRepository(em);
 	
@@ -25,18 +24,19 @@ public class LoginServiceTest {
 		
 		// given
 		User user = new User();
-		user.setName("test");
-		user.setNickname("test");
+//		user.setName("test");
+//		user.setNickname("test");
 		user.setId("test1");
 		user.setPw("test");
 		user.setAuth("USER");
-		user.setJoin_date(new Date());
+//		user.setJoin_date(new Date());
 		
+		String check = "";
 		// when
-		loginService.adduser(user);
+		check = loginService.adduser(user);
 		
 		// then -> IllegalStateException이 나야함.
-		
+		Assertions.assertThat(check);
 	}
 
 }
