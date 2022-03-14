@@ -7,7 +7,7 @@ import com.recipe.domain.Post;
 
 public interface PostRepository {
 	
-	Post save(Post post);
+	void save(Post post);
 	List<Post> findAll();
 	Optional<Post> findByTitle(String title);
 }

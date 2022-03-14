@@ -6,6 +6,6 @@ import com.recipe.domain.User;
 
 public interface UserRepository {
 	
-	User save(User user);
+	void save(User user);
 	Optional<User> findById(String id);
 }

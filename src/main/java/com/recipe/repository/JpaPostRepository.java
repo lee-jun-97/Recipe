@@ -20,16 +20,15 @@ public class JpaPostRepository implements PostRepository {
 	}
 
 	@Override
-	public Post save(Post post) {
+	public void save(Post post) {
 		// JPA 저장
 		em.persist(post);
-		return post;
 	}
 
 	@Override
 	public List<Post> findAll() {
 		// JPQL 언어 사용 하여 쿼리실행
-		return em.createQuery("select A from Post", Post.class).getResultList();
+		return em.createQuery("select A from Post A", Post.class).getResultList();
 	}
 
 	@Override

@@ -7,7 +7,7 @@ import com.recipe.domain.Ingredient;
 
 public interface IngredientRepository {
 	
-	Ingredient save(Ingredient ing);
+	void save(Ingredient ing);
 	Optional<Ingredient> findByMenu(String menu);
 
 }

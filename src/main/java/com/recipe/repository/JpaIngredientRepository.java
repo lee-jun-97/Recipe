@@ -18,9 +18,8 @@ public class JpaIngredientRepository implements IngredientRepository {
 	}
 
 	@Override
-	public Ingredient save(Ingredient ing) {
+	public void save(Ingredient ing) {
 		em.persist(ing);
-		return ing;
 	}
 
 	@Override

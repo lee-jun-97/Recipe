@@ -18,9 +18,8 @@ public class JpaRecipeRepository implements RecipeRepository {
 	}
 
 	@Override
-	public Recipe save(Recipe recipe) {
+	public void save(Recipe recipe) {
 		em.persist(recipe);
-		return recipe;
 	}
 
 	@Override

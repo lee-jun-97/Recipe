@@ -18,9 +18,8 @@ public class JpaUserRepository implements UserRepository {
 	}
 
 	@Override
-	public User save(User vo) {
+	public void save(User vo) {
 		em.persist(vo);
-		return vo;
 	}
 
 	@Override

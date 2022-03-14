@@ -44,25 +44,19 @@ public class PostService {
 	}
 	
 	
-	public String savePost(Post postVO) {
+	public void savePost(Post postVO) {
 		
 		postRepo.save(postVO);
-		
-		return "success";
 	}
 	
-	public String saveIngredient(Ingredient ingredientVO) {
+	public void saveIngredient(Ingredient ingredientVO) {
 		
 		ingredientRepo.save(ingredientVO);
-		
-		return "success";
 	}
 	
-	public String saveRecipe(Recipe recipeVO) {
+	public void saveRecipe(Recipe recipeVO) {
 		
 		recipeRepo.save(recipeVO);
-		
-		return "success";
 	}
 
 	public String changeFormat(Date reg_date) {

@@ -22,6 +22,5 @@ public class User {
 	public String auth;
 	public Date join_date;
 	public Date leave_date;
-	
 
 }

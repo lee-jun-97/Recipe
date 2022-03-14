@@ -1,17 +1,13 @@
 package com.recipe.controller;
 
 import java.util.Date;
-import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.recipe.domain.Detail;
 import com.recipe.domain.Ingredient;
 import com.recipe.domain.Post;
 import com.recipe.domain.Recipe;
@@ -21,7 +17,7 @@ import com.recipe.service.PostService;
 @Controller
 public class PostController {
 	
-	private static final Logger log = LoggerFactory.getLogger(PostController.class);
+//	private static final Logger log = LoggerFactory.getLogger(PostController.class);
 	
 	@Autowired
 	PostService postService ;
@@ -32,9 +28,7 @@ public class PostController {
 	@RequestMapping("/post")
 	public String post(Model model) {
 		
-		List<Post> postList = postService.getPostAll();
-		
-		model.addAttribute("postList", postList);
+		model.addAttribute("postList", postService.getPostAll());
 		
 		return "post";
 	}
@@ -50,11 +44,7 @@ public class PostController {
 	@RequestMapping("/detailpost")
 	public String detailpost(@RequestParam String title, @RequestParam String menu, Model model) {
 		
-		log.info(title);
-		
-		List<Detail> detailList = postService.getPostDetail(title, menu);
-		
-		model.addAttribute("detailList", detailList);
+		model.addAttribute("detailList", postService.getPostDetail(title, menu));
 		
 		return "detailPost";
 	}

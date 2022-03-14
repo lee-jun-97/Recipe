@@ -35,7 +35,7 @@ public class MainController {
 		if (check == true ) {
 			redirect = "redirect:/post";
 		} else {
-			redirect = "redirect:/login";
+			redirect = "redirect:/";
 		}
 		
 		return redirect;
