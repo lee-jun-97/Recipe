@@ -30,9 +30,7 @@ public class MainController {
 		
 		String redirect = "";
 		
-		boolean check = loginService.logincheck(id, pw);
-		
-		if (check == true ) {
+		if (loginService.loginCheck(id, pw) == true ) {
 			redirect = "redirect:/post";
 		} else {
 			redirect = "redirect:/";
@@ -48,15 +46,15 @@ public class MainController {
 	}
 	
 	@RequestMapping("/signup")
-	public String signup() {
+	public String signUp() {
 		
 		return "signup";
 	}
 	
 	@RequestMapping("/adduser")
-	public String adduser(User user) {
+	public String addUser(User user) {
 		
-		return loginService.adduser(userSet(user));
+		return loginService.addUser(userSet(user));
 	}
 	
 	public User userSet(User user) {

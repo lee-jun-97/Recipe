@@ -16,12 +16,12 @@ public class LoginService {
 		this.userRepo = userRepo;
 	}
 	
-	public boolean logincheck(String id, String pw) {
+	public boolean loginCheck(String id, String pw) {
 		
 		return userCheck(id, pw, userRepo.findById(id));
 	}
 	
-	public String adduser(User user) {
+	public String addUser(User user) {
 		Optional<User> user_1 = userRepo.findById(user.getId());
 		if (validate(user_1.get().getId()) == true ) {
 			userRepo.save(user);

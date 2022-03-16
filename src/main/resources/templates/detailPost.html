@@ -6,38 +6,42 @@
 	</head>
 	<body>
 		<h1 align="center">게시글 상세 내용</h1>
-		<form action="/save" method="POST">
-			<table id="post_table" border="1" align="center" data-th-each="vo:${detailList}" data-th-if="${detailList.size() > 0}">
+		<form th:action="@{/save}" th:method="POST">
+			<table border="1" align="center" th:each="vo:${detailList}" th:if="${detailList.size() > 0}">
 				<tr>
 					<td>제목</td>
-					<td>
-						<input type="text" id="title" name="title" data-th-value="${vo.title}">
-					</td>
+					<td th:text="${vo.title}"></td>
 				</tr>
 				<tr>
 					<td>메뉴</td>
-					<td>
-						<input type="text" id="menu" name="menu" data-th-value="${vo.menu}">
-					</td>
+					<td th:text="${vo.menu}"></td>
 				</tr>
 				<tr>
 					<td>재료들</td>
-					<td>
-						<input type="text" id="ingredient" name="ingredient" data-th-value="${vo.ingredient}">
-						<input type="text" id="amount" name="amount" data-th-value="${vo.amount}">
-					</td>
+					<td th:text="${vo.ingredient}"></td>
 				</tr>
 				<tr>
 					<td>조리법</td>
-					<td>
-						<input type="text" id="recipe" name="recipe" data-th-value="${vo.recipe}">
-					</td>
+					<td th:text="${vo.recipe}"></td>
 				</tr>
 				<tr>
-					<td><button type="submit">저장</button></td>
-					<td><a th:href="/post"><button>목록</button></a></td>
+					<td>
+						<button type="submit">저장</button>
+					</td>
 				</tr>
 			</table>
 		</form>
+		<form th:action="@{/comment(title=${vo.title})}" th:method="POST">
+			<p><textarea cols="50" name="comment"></textarea></p>
+			<p><button type="submit">저장</button></p>
+		</form>
+		<table>
+			<tr th:each="vo:${commentList}" th:if="${commentList.size() > 0}">
+				<td th:text="${vo.id}"></td>
+				<td th:text="${#dates.format(vo.write_date, 'yyyy/MM/dd HH:mm:ss')}"></td>
+				<td th:text="${vo.comment}"></td>
+			</tr>
+		</table>
+		<a th:href="@{/post}"><button>목록</button></a>
 	</body>
 </html>

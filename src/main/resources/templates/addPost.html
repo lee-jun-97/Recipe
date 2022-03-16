@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<h1 align="center">게시글 작성</h1>
-		<form action="/save" method="PUT">
+		<form th:action="@{/save}" th:method="POST">
 			<table id="post_table" border="1" align="center">
 				<tr>
 					<td>제목</td>
@@ -34,6 +34,6 @@
 				</tr>
 			</table>
 		</form>
-		<a href="/post"><button>목록</button></a>
+		<a th:href="@{/post}"><button>목록</button></a>
 	</body>
 </html>

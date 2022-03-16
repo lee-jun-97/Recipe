@@ -22,7 +22,7 @@ public class JpaCustomRepository implements CustomRepository {
 	}
 
 	@Override
-	public List<Detail> findDetail(String title, String menu) {
+	public List<Detail> findDetail(String title) {
 		List<Post> detail_menu = em.createQuery("SELECT A FROM Post A WHERE A.title = :title", Post.class)
 				.setParameter("title", title)
 				.getResultList();
@@ -42,8 +42,7 @@ public class JpaCustomRepository implements CustomRepository {
 		
 		detail.setTitle(title);
 		detail.setMenu(detail_menu.get(0).getMenu());
-		detail.setIngredient(detail_ing.get(0).getIngredient());
-		detail.setAmount(detail_ing.get(0).getAmount());
+		detail.setIngredient(detail_ing.get(0).getIngredient() + " " + detail_ing.get(0).getAmount());
 		detail.setRecipe(detail_reci.get(0).getRecipe());
 		
 		List<Detail> detailList = new ArrayList<>();

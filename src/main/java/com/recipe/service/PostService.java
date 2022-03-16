@@ -7,10 +7,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.recipe.domain.Comment;
 import com.recipe.domain.Detail;
 import com.recipe.domain.Ingredient;
 import com.recipe.domain.Post;
 import com.recipe.domain.Recipe;
+import com.recipe.repository.CommentRepository;
 import com.recipe.repository.CustomRepository;
 import com.recipe.repository.IngredientRepository;
 import com.recipe.repository.PostRepository;
@@ -32,15 +34,18 @@ public class PostService {
 	
 	@Autowired
 	CustomRepository customRepo;
+
+	@Autowired
+	CommentRepository commentRepo;
 	
 	public List<Post> getPostAll() {
 		return postRepo.findAll();
 	}
 	
-	public List<Detail> getPostDetail(String title, String menu) {
+	public List<Detail> getPostDetail(String title) {
 		// 2022. 03. 02 ~ 2022. 03 .06
 		// Detail 정보 Select 하는 기능 완성
-		return customRepo.findDetail(title, menu);
+		return customRepo.findDetail(title);
 	}
 	
 	
@@ -57,6 +62,10 @@ public class PostService {
 	public void saveRecipe(Recipe recipeVO) {
 		
 		recipeRepo.save(recipeVO);
+	}
+
+	public List<Comment> getComment(String title) {
+		return commentRepo.findByTitle(title);
 	}
 
 	public String changeFormat(Date reg_date) {

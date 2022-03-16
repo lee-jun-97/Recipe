@@ -8,7 +8,6 @@ public class Detail {
 	public String title;
 	public String menu;
 	public String ingredient;
-	public String amount;
 	public String recipe;
 	
 }

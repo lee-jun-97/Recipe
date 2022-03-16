@@ -17,11 +17,11 @@
 			<tbody>
 				<!-- Post Table DB 내용 보여줘야 함. -->
 				<tr data-th-each="vo:${postList}" data-th-if="${postList.size() > 0}">
-					<td data-th-text="${vo.seq}"></td>
-					<td data-th-text="${vo.menu}"></td>
-					<td><a th:href="@{/detailpost(title=${vo.title})}"data-th-text="${vo.title}"></a></td>
-					<td data-th-text="${vo.id}"></td>
-					<td data-th-text="${#dates.format(vo.reg_date, 'yyyy/MM/dd HH:mm:ss')}" ></td>
+					<td th:text="${vo.seq}"></td>
+					<td th:text="${vo.menu}"></td>
+					<td><a th:href="@{/detailpost(title=${vo.title})}"th:text="${vo.title}"></a></td>
+					<td th:text="${vo.id}"></td>
+					<td th:text="${#dates.format(vo.reg_date, 'yyyy/MM/dd HH:mm:ss')}" ></td>
 				</tr>
 				<tr>
 					<td colspan="5"><a th:href="@{/addpost}"><button>작성</button></a></td>

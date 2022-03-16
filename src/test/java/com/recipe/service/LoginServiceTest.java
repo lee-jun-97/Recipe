@@ -33,7 +33,7 @@ public class LoginServiceTest {
 		
 		String check = "";
 		// when
-		check = loginService.adduser(user);
+		check = loginService.addUser(user);
 		
 		// then -> IllegalStateException이 나야함.
 		Assertions.assertThat(check);

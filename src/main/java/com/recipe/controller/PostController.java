@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.recipe.domain.Ingredient;
 import com.recipe.domain.Post;
 import com.recipe.domain.Recipe;
-import com.recipe.domain.Session;
 import com.recipe.service.PostService;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 
 @Controller
 public class PostController {
@@ -21,10 +22,7 @@ public class PostController {
 	
 	@Autowired
 	PostService postService ;
-	
-	@Autowired
-	Session session;
-	
+
 	@RequestMapping("/post")
 	public String post(Model model) {
 		
@@ -34,19 +32,18 @@ public class PostController {
 	}
 	
 	@RequestMapping("/addpost")
-	public String addpost() {
+	public String addPost() {
 		
-		return "addPost";
+		return "addpost";
 	}
 	
-	// 2022. 03. 02
-	// 보류
 	@RequestMapping("/detailpost")
-	public String detailpost(@RequestParam String title, @RequestParam String menu, Model model) {
+	public String detailPost(@RequestParam String title, Model model) {
 		
-		model.addAttribute("detailList", postService.getPostDetail(title, menu));
+		model.addAttribute("detailList", postService.getPostDetail(title));
+		model.addAttribute("commentList",postService.getComment(title));
 		
-		return "detailPost";
+		return "detailpost";
 	}
 	
 	@RequestMapping("/save")
@@ -82,5 +79,14 @@ public class PostController {
 		
 		return "redirect:/post";
 	}
+
+	@RequestMapping("/comment")
+	public String saveComment(@RequestParam String title, @RequestParam String comment) {
+
+
+
+		return "redirect:/detailpost?title="+title ;
+	}
+	
 
 }
