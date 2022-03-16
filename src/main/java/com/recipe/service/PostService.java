@@ -48,6 +48,9 @@ public class PostService {
 		return customRepo.findDetail(title);
 	}
 	
+	public List<Comment> getComment(String title) {
+		return commentRepo.findByTitle(title);
+	}
 	
 	public void savePost(Post postVO) {
 		
@@ -64,8 +67,8 @@ public class PostService {
 		recipeRepo.save(recipeVO);
 	}
 
-	public List<Comment> getComment(String title) {
-		return commentRepo.findByTitle(title);
+	public void saveComment(Comment comment) {
+		commentRepo.save(comment);
 	}
 
 	public String changeFormat(Date reg_date) {

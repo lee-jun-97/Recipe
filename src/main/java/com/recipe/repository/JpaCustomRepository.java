@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,7 @@ import com.recipe.domain.Post;
 import com.recipe.domain.Recipe;
 
 @Repository
+@Transactional
 public class JpaCustomRepository implements CustomRepository {
 	
 	EntityManager em ;

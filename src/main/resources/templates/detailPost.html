@@ -25,23 +25,25 @@
 					<td th:text="${vo.recipe}"></td>
 				</tr>
 				<tr>
-					<td>
+					<td colspan="200px">
 						<button type="submit">저장</button>
 					</td>
 				</tr>
 			</table>
 		</form>
-		<form th:action="@{/comment(title=${vo.title})}" th:method="POST">
+		<a th:href="@{/post}"><button>목록</button></a>
+		<form th:action="@{/comment}" th:method="POST">
+			<input type="text" name="title"></p>
 			<p><textarea cols="50" name="comment"></textarea></p>
 			<p><button type="submit">저장</button></p>
 		</form>
-		<table>
+		<table border ="2" align="center">
+		<th colspan="300px">댓글</th>
 			<tr th:each="vo:${commentList}" th:if="${commentList.size() > 0}">
 				<td th:text="${vo.id}"></td>
 				<td th:text="${#dates.format(vo.write_date, 'yyyy/MM/dd HH:mm:ss')}"></td>
 				<td th:text="${vo.comment}"></td>
 			</tr>
 		</table>
-		<a th:href="@{/post}"><button>목록</button></a>
 	</body>
 </html>

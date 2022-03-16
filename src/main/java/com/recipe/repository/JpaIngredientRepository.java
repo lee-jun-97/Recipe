@@ -3,12 +3,14 @@ package com.recipe.repository;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
 import com.recipe.domain.Ingredient;
 
 @Repository
+@Transactional
 public class JpaIngredientRepository implements IngredientRepository {
 	
 	EntityManager em ;

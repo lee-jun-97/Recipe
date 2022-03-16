@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
 import com.recipe.domain.Post;
 
 @Repository
+@Transactional
 public class JpaPostRepository implements PostRepository {
 	
 	private EntityManager em ;

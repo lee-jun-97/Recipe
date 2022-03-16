@@ -8,11 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.recipe.domain.Comment;
 import com.recipe.domain.Ingredient;
 import com.recipe.domain.Post;
 import com.recipe.domain.Recipe;
 import com.recipe.service.PostService;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
@@ -83,7 +83,14 @@ public class PostController {
 	@RequestMapping("/comment")
 	public String saveComment(@RequestParam String title, @RequestParam String comment) {
 
+		Comment comment2 = new Comment();
 
+		comment2.setId("test");
+		comment2.setTitle(title);
+		comment2.setWrite_date(new Date());
+		comment2.setComment(comment);
+
+		postService.saveComment(comment2);
 
 		return "redirect:/detailpost?title="+title ;
 	}
