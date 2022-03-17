@@ -70,11 +70,4 @@ public class PostService {
 	public void saveComment(Comment comment) {
 		commentRepo.save(comment);
 	}
-
-	public String changeFormat(Date reg_date) {
-		
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		
-		return df.format(reg_date);
-	}
 }

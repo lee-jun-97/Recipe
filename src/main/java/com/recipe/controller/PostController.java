@@ -23,6 +23,8 @@ public class PostController {
 	@Autowired
 	PostService postService ;
 
+	private String title;
+
 	@RequestMapping("/post")
 	public String post(Model model) {
 		
@@ -39,6 +41,8 @@ public class PostController {
 	
 	@RequestMapping("/detailpost")
 	public String detailPost(@RequestParam String title, Model model) {
+
+		this.title = title;
 		
 		model.addAttribute("detailList", postService.getPostDetail(title));
 		model.addAttribute("commentList",postService.getComment(title));
@@ -81,18 +85,18 @@ public class PostController {
 	}
 
 	@RequestMapping("/comment")
-	public String saveComment(@RequestParam String title, @RequestParam String comment) {
+	public String saveComment(@RequestParam String comment) {
 
 		Comment comment2 = new Comment();
 
 		comment2.setId("test");
-		comment2.setTitle(title);
+		comment2.setTitle(this.title);
 		comment2.setWrite_date(new Date());
 		comment2.setComment(comment);
 
 		postService.saveComment(comment2);
 
-		return "redirect:/detailpost?title="+title ;
+		return "redirect:/detailpost?title=" + this.title ;
 	}
 	
 

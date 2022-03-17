@@ -13,10 +13,10 @@ import lombok.Data;
 @Table(name="comment")
 public class Comment {
 
-    @Id
     String id ;
     String comment;
     String title;
+    @Id
     Date write_date;
     
 }

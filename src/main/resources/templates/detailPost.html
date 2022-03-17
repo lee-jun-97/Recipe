@@ -32,18 +32,19 @@
 			</table>
 		</form>
 		<a th:href="@{/post}"><button>목록</button></a>
-		<form th:action="@{/comment}" th:method="POST">
-			<input type="text" name="title"></p>
-			<p><textarea cols="50" name="comment"></textarea></p>
-			<p><button type="submit">저장</button></p>
+		<form th:action="@{/comment}" th:method="POST" align="center">
+			<p>댓글 작성</p>
+			<div th:each="vo:${detailList}" th:if="${detailList.size() > 0}">
+				<textarea cols="50" name="comment"></textarea>
+				<button type="submit">저장</button>
+			</div>
 		</form>
 		<table border ="2" align="center">
-		<th colspan="300px">댓글</th>
 			<tr th:each="vo:${commentList}" th:if="${commentList.size() > 0}">
 				<td th:text="${vo.id}"></td>
 				<td th:text="${#dates.format(vo.write_date, 'yyyy/MM/dd HH:mm:ss')}"></td>
 				<td th:text="${vo.comment}"></td>
-			</tr>
+		</tr>
 		</table>
 	</body>
 </html>
