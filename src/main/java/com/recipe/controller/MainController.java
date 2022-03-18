@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -19,7 +21,7 @@ public class MainController {
 		this.loginService = loginService ;
 	}
 	
-	@RequestMapping("/")
+	@GetMapping("/")
 	public String home() {
 
 		return "login";
@@ -51,7 +53,7 @@ public class MainController {
 		return "signup";
 	}
 	
-	@RequestMapping("/adduser")
+	@PostMapping("/adduser")
 	public String addUser(User user) {
 		
 		return loginService.addUser(userSet(user));

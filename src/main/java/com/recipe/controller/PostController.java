@@ -5,6 +5,8 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,7 +27,7 @@ public class PostController {
 
 	private String title;
 
-	@RequestMapping("/post")
+	@GetMapping("/post")
 	public String post(Model model) {
 		
 		model.addAttribute("postList", postService.getPostAll());
@@ -33,13 +35,13 @@ public class PostController {
 		return "post";
 	}
 	
-	@RequestMapping("/addpost")
+	@GetMapping("/addpost")
 	public String addPost() {
 		
 		return "addpost";
 	}
 	
-	@RequestMapping("/detailpost")
+	@GetMapping("/detailpost")
 	public String detailPost(@RequestParam String title, Model model) {
 
 		this.title = title;
@@ -50,7 +52,7 @@ public class PostController {
 		return "detailpost";
 	}
 	
-	@RequestMapping("/save")
+	@PostMapping("/save")
 	public String save(
 			@RequestParam String title, @RequestParam String menu,
 			@RequestParam String ingredient, @RequestParam String amount, @RequestParam String recipe) {
@@ -84,7 +86,7 @@ public class PostController {
 		return "redirect:/post";
 	}
 
-	@RequestMapping("/comment")
+	@PostMapping("/comment")
 	public String saveComment(@RequestParam String comment) {
 
 		Comment comment2 = new Comment();
