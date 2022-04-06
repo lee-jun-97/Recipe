@@ -46,6 +46,7 @@ public class JpaCustomRepository implements CustomRepository {
 		detail.setMenu(detail_menu.get(0).getMenu());
 		detail.setIngredient(detail_ing.get(0).getIngredient() + " " + detail_ing.get(0).getAmount());
 		detail.setRecipe(detail_reci.get(0).getRecipe());
+		detail.setId(detail_menu.get(0).getId());
 		
 		List<Detail> detailList = new ArrayList<>();
 		

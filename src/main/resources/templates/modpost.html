@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Recipe Share Page</title>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+		<h1 align="center">게시글 수정</h1>
+		<form th:action="@{/save}" th:method="POST">
+			<table border="1" align="center">
+				<tr>
+					<td>제목</td>
+					<td th:value="${title}"></td>
+				</tr>
+				<tr>
+					<td>메뉴</td>
+					<td th:value="${menu}"></td>
+				</tr>
+				<tr>
+					<td>재료들</td>
+					<td th:value="${ingredient}"></td>
+				</tr>
+				<tr>
+					<td>조리법</td>
+					<td th:value="${recipe}"></td>
+				</tr>
+				<tr>
+					<td colspan="200px">
+						<a th:href="@{/save}"><button type="submit">저장</button></a>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<a th:href="@{/post}"><button>목록</button></a>
+	</body>
+</html>

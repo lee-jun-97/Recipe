@@ -6,27 +6,27 @@
 	</head>
 	<body>
 		<h1 align="center">게시글 상세 내용</h1>
-		<form th:action="@{/save}" th:method="POST">
+		<form th:action="@{/modPost}" th:method="POST">
 			<table border="1" align="center" th:each="vo:${detailList}" th:if="${detailList.size() > 0}">
 				<tr>
 					<td>제목</td>
-					<td th:text="${vo.title}"></td>
+					<td id="title" name="title" th:value="${vo.title}" th:text="${vo.title}"></td>
 				</tr>
 				<tr>
 					<td>메뉴</td>
-					<td th:text="${vo.menu}"></td>
+					<td id="menu" name="menu" th:value="${vo.menu}" th:text="${vo.menu}"></td>
 				</tr>
 				<tr>
 					<td>재료들</td>
-					<td th:text="${vo.ingredient}"></td>
+					<td id="ingredient" name="ingredient" th:value="${vo.ingredient}" th:text="${vo.ingredient}"></td>
 				</tr>
 				<tr>
 					<td>조리법</td>
-					<td th:text="${vo.recipe}"></td>
+					<td id="recipe" name="recipe" th:value="${vo.recipe}" th:text="${vo.recipe}"></td>
 				</tr>
 				<tr>
 					<td colspan="200px">
-						<button type="submit">저장</button>
+						<button type="submit">수정</button></a>
 					</td>
 				</tr>
 			</table>

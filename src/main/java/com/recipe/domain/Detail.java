@@ -9,5 +9,6 @@ public class Detail {
 	public String menu;
 	public String ingredient;
 	public String recipe;
+	public String id;
 	
 }

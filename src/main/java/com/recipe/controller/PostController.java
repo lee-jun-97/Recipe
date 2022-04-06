@@ -7,13 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.recipe.domain.Comment;
 import com.recipe.domain.Ingredient;
 import com.recipe.domain.Post;
 import com.recipe.domain.Recipe;
+import com.recipe.domain.Session;
 import com.recipe.service.PostService;
 
 
@@ -24,6 +24,9 @@ public class PostController {
 	
 	@Autowired
 	PostService postService ;
+	
+	@Autowired
+	Session session ;
 
 	private String title;
 
@@ -48,6 +51,7 @@ public class PostController {
 		
 		model.addAttribute("detailList", postService.getPostDetail(title));
 		model.addAttribute("commentList",postService.getComment(title));
+		model.addAttribute("session", session);
 		
 		return "detailpost";
 	}
@@ -85,13 +89,27 @@ public class PostController {
 		
 		return "redirect:/post";
 	}
+	
+	@PostMapping("/modPost")
+	public String modPost(
+			@RequestParam String title, @RequestParam String menu,
+			@RequestParam String ingredient, @RequestParam String amount, @RequestParam String recipe, Model model) {
+
+		model.addAttribute("title", title);
+		model.addAttribute("menu", menu);
+		model.addAttribute("ingredient", ingredient);
+		model.addAttribute("amount", amount);
+		model.addAttribute("recipe", recipe);
+		
+		return "modpost";
+	}
 
 	@PostMapping("/comment")
 	public String saveComment(@RequestParam String comment) {
 
 		Comment comment2 = new Comment();
 
-		comment2.setId("test");
+		comment2.setId(session.getId());
 		comment2.setTitle(this.title);
 		comment2.setWrite_date(new Date());
 		comment2.setComment(comment);

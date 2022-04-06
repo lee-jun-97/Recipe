@@ -1,14 +1,13 @@
 package com.recipe.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.recipe.domain.Session;
 import com.recipe.domain.User;
 import com.recipe.service.LoginService;
 
@@ -16,6 +15,9 @@ import com.recipe.service.LoginService;
 public class MainController {
 	
 	private LoginService loginService ;
+	
+	@Autowired
+	public Session session ;
 	
 	public MainController(LoginService loginService) {
 		this.loginService = loginService ;
@@ -34,6 +36,7 @@ public class MainController {
 		
 		if (loginService.loginCheck(id, pw) == true ) {
 			redirect = "redirect:/post";
+			session = new Session(id,pw);
 		} else {
 			redirect = "redirect:/";
 		}
@@ -43,6 +46,8 @@ public class MainController {
 	
 	@RequestMapping("/logout")
 	public String logout() {
+		
+		session = new Session();
 		
 		return "redirect:/";
 	}
@@ -56,22 +61,7 @@ public class MainController {
 	@PostMapping("/adduser")
 	public String addUser(User user) {
 		
-		return loginService.addUser(userSet(user));
+		return loginService.addUser(loginService.userSet(user));
 	}
-	
-	public User userSet(User user) {
-		
-		Date date = new Date();
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		
-		df.format(date);
-		
-		user.setAuth("USER");
-		user.setJoin_date(date);
-		
-		return user;
-	}
-	
-	
 
 }

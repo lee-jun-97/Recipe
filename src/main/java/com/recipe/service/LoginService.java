@@ -1,5 +1,7 @@
 package com.recipe.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -30,6 +32,20 @@ public class LoginService {
 			return "redirect:/signup";
 		}
 	}
+	
+	public User userSet(User user) {
+		
+		Date date = new Date();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		
+		df.format(date);
+		
+		user.setAuth("USER");
+		user.setJoin_date(date);
+		
+		return user;
+	}
+
 	
 	
 	public boolean validate(String id) throws IllegalStateException {
