@@ -1,6 +1,7 @@
 package com.recipe.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.recipe.domain.Comment;
+import com.recipe.domain.Detail;
 import com.recipe.domain.Ingredient;
 import com.recipe.domain.Post;
 import com.recipe.domain.Recipe;
@@ -27,6 +29,9 @@ public class PostController {
 	
 	@Autowired
 	Session session ;
+	
+	@Autowired
+	Detail detail ;
 
 	private String title;
 
@@ -49,7 +54,14 @@ public class PostController {
 
 		this.title = title;
 		
-		model.addAttribute("detailList", postService.getPostDetail(title));
+		List<Detail> deList = postService.getPostDetail(title) ;
+		
+		this.detail.setId(deList.get(0).getId());
+		this.detail.setId(deList.get(0).getMenu());
+		this.detail.setId(deList.get(0).getIngredient());
+		this.detail.setId(deList.get(0).getRecipe());
+		
+		model.addAttribute("detailList", deList);
 		model.addAttribute("commentList",postService.getComment(title));
 		model.addAttribute("session", session);
 		
